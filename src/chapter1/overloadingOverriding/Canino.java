@@ -13,4 +13,8 @@ public class Canino {
 	protected void lancaException() throws Exception{
 		
 	}
+	
+	public static void metodoEstatico(){
+		System.out.println("metodo estatico na SuperClass");
+	}
 }

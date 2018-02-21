@@ -16,10 +16,15 @@ public class Cachorro extends Canino{
 	public void lancaException() throws ClassNotFoundException{
 		
 	}
+	
+	public static void metodoEstatico(){
+		System.out.println("Nao existe sobreescrita de metodo estatico. Fica apenas escondido.");
+	}
 
 	public static void main(String [] args){
 		Canino c = new Cachorro();
 		System.out.println(c.lateComReturn());
-		
+		c.metodoEstatico();
+		((Cachorro)c).metodoEstatico();
 	}
 }
