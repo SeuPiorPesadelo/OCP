@@ -6,7 +6,7 @@ package chapter1.nestedClasses;
  * @author Lucas
  *
  */
-public class Outer1 {
+public class Local {
 
 	private int length = 5;
 
@@ -33,7 +33,7 @@ public class Outer1 {
 	}
 
 	public static void main(String[] args) {
-		Outer1 out = new Outer1();
+		Local out = new Local();
 		System.out.println(out.calculate());
 		int i = out.calculate();
 		System.out.println(i);

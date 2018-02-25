@@ -6,7 +6,7 @@ package chapter1.nestedClasses;
  * @author Lucas
  *
  */
-public class Outer {
+public class Member {
 
 	private String variable = "Oi";
 
@@ -28,7 +28,7 @@ public class Outer {
 	}
 	
 	public static void main(String[] args){
-		new Outer().callInner();
-		new Outer().new Inner().print();
+		new Member().callInner();
+		new Member().new Inner().print();
 	}
 }
