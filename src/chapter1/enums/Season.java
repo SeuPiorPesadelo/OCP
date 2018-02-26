@@ -22,8 +22,8 @@ public enum Season {
 
 	private String expectativa;
 
-	// construtor de Enum sempre privado
-	private Season(String n) {
+	// construtor de Enum sempre privado, pode tbm nao colocar nada
+	Season(String n) {
 		expectativa = n;
 		System.out.println("Construtor de Enum chamado");
 	}
