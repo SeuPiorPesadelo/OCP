@@ -23,7 +23,6 @@ public final class Animal {
 	
 	//Nao possui metodos Sets
 	//Nao permite q variaveis de instancia mutaveis sejam modificadas
-	
 	public int qtdDeComidasFavoritas(){
 		return comidasFavoritas.size();
 	}
@@ -39,4 +38,10 @@ public final class Animal {
 	public int getIdade() {
 		return idade;
 	}
+
+	@Override
+	public String toString() {
+		return "Animal [nome=" + nome + ", idade=" + idade + ", comidasFavoritas=" + comidasFavoritas + "]";
+	}
+
 }
