@@ -6,8 +6,6 @@ public class MetodoDeIntanciaDeUmaInstanciaEmTempoDeExecucao {
 	
 	public static void main(String... strings) {
 
-		String instanciaEmQuestao = "Lucas";
-
 		// metodo de instancia de uma instancia q surgirá em tempo de execucao
 		Predicate<String> predicate = String::isEmpty;
 		// equivalente em lambda

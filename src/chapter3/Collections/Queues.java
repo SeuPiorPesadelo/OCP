@@ -21,7 +21,7 @@ public class Queues {
 
 	private static void preencheEPrinta(ArrayDeque<Integer> q) {
 		for (int i = 0; i < 10; i++) {
-			q.offer(i);
+			q.offer(i);// offer insere no fim da fila
 		}
 		q.forEach(s -> System.out.print(s));
 		System.out.println();
