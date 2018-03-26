@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class BasicoStream {
@@ -33,6 +34,11 @@ public class BasicoStream {
 
 		metodoReduce();
 		metodoCollect();
+		Stream<Integer> asd = Stream.iterate(1, x -> x+1); //Stream infinita
+		asd.filter(x -> x % 2 == 0).limit(5).peek(System.out::print).forEach(System.out::print);//224466881010
+		
+		System.out.println();
+		IntStream.range(1, 6).forEach(System.out::print);//printa 12345
 	}
 
 	private static void metodoReduce() {
