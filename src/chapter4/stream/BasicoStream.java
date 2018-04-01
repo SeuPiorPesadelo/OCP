@@ -62,8 +62,9 @@ public class BasicoStream {
 		// <U> U reduce(U identity, BiFunction<U, ? super T,U> accumulator, BinaryOperator<U> combiner)
 		BinaryOperator<Integer> bo = (a, b) -> a * b;
 		Stream<Integer> asd = Stream.of(1, 2, 3);
-		System.out.print("Com a assinatura <U> U reduce(U identity, BiFunction<U, ? super T,U> accumulator, BinaryOperator<U> combiner): ");
-		System.out.println(asd.reduce(1, bo, bo)); // 6
+		System.out.println("@@@@@@@@@@@@@@@"+asd.count());//count conta quantos elementos tem
+//		System.out.print("Com a assinatura <U> U reduce(U identity, BiFunction<U, ? super T,U> accumulator, BinaryOperator<U> combiner): ");
+//		System.out.println(asd.reduce(1, bo, bo)); // 6
 	}
 
 	private static void metodoCollect() {
