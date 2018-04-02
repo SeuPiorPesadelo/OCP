@@ -6,10 +6,14 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalDouble;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -21,6 +25,8 @@ public class TricksAndErrors {
 		preIncrementoComStream();
 		functionComMesmoComportamentoqueSupplier();
 		acharMaiorNumero();
+		mapeamentosDiferentesNoMapTo();
+		replaceAllAceitaUnaryOperator();
 
 		List<Integer> e = IntStream.range(1, 6).mapToObj(x -> x).collect(Collectors.toList());
 		e.forEach(System.out::println);
@@ -34,6 +40,14 @@ public class TricksAndErrors {
 		System.out.println(ls.stream().max(Integer::compare).get());// 9
 
 		System.out.println(ls.stream().max((a, b) -> a > b ? a : b));// Optional[3]
+	}
+
+	private static void replaceAllAceitaUnaryOperator() {
+		List<String> letters1 = Arrays.asList("j", "a", "v","a");
+		UnaryOperator<String> op = s -> s.toUpperCase();
+		letters1.replaceAll(op);
+		letters1.forEach(System.out::print);
+		System.out.println();
 	}
 
 	private static void streamGenerateAllMatch() {
@@ -82,6 +96,23 @@ public class TricksAndErrors {
 		
 		System.out.print("maior com max:" + maiorComMax + " e maior com reduce: " + maiorComReduce);
 		System.out.println();
+		
+		List<Integer> primes = Arrays.asList(2, 3, 5, 7, 11, 13, 17);
+		Stream<Integer> primeStream = primes.stream();
+		Predicate<Integer> test1 = k -> k < 10;
+		primeStream.collect(Collectors.partitioningBy(test1, Collectors.counting())).values()
+				.forEach(System.out::print);
+		System.out.println();
+		
+		DoubleStream sd = DoubleStream.of(1.1,1.1,1.1);
+		OptionalDouble sum = sd.average();
+		List<String> letters = Arrays.asList("j", "a", "v","a");
+		System.out.print(letters.stream().collect(Collectors.joining(", ")));//joining() ou recebe soh uma String ou nao recebe nada 
+		System.out.println();
+		Optional<Double> price = Optional.ofNullable(null);
+		System.out.println(price.orElseGet(() -> 6.9));
+		
+		
 	}
 	
 	private static void comportamentoIgualAoComputeIfAbsent() {
@@ -100,5 +131,19 @@ public class TricksAndErrors {
 
 		//processo simplificado       key             Function
 		groupedValues.computeIfAbsent(name, (a) -> new ArrayList<Double>()).add(value);
+	}
+	
+	private static void mapeamentosDiferentesNoMapTo(){
+		List<Book> books = Arrays.asList(new Book("Gone with the wind", 10.0), new Book("Atlas Shrugged", 10.0),
+				new Book("Freedom at Midnight", 5.0), new Book("Gone with the wind", 5.0));
+		
+		//no mapToDouble pode ser usado uma Funtion<T,R> já com algum tipo de filtro
+		double somaComFunctionNoMapToDouble = books.stream().mapToDouble(b -> b.getPrice() > 5 ? b.getPrice() : 0.0)
+				.sum();
+		
+		//Ou pode ser usado um Function<T,R> p/ um mapeamento normal e com um filter(Predicate) antes ou depois
+		double sumComPredicateNoFilter = books.stream().mapToDouble(b -> b.getPrice()).filter(b -> b > 5.0).sum();
+		System.out.println("soma Com Function No Map To Double " + somaComFunctionNoMapToDouble
+				+ ", soma Com Predicate No Filter " + sumComPredicateNoFilter);
 	}
 }
