@@ -16,6 +16,7 @@ public class LowerBounded {
 	//list mutavel
 	private static void total(List<? super Integer> list) {
 		list.add(2);//compila, eh mutavel
+		list.remove(new Integer(10));
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}

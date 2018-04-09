@@ -39,6 +39,7 @@ public class BasicoStream {
 		
 		System.out.println();
 		IntStream.range(1, 6).forEach(System.out::print);//printa 12345
+		
 	}
 
 	private static void metodoReduce() {
@@ -76,6 +77,5 @@ public class BasicoStream {
 												//fornece o Obj		realiza a operacao		faz o merge de tudo, util quando usado StreamParallel	
 		StringBuilder sb = streamString.collect(StringBuilder::new, StringBuilder::append, StringBuilder::append);
 		System.out.println(".collect() " + sb);
-		
 	}
 }

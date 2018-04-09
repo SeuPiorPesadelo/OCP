@@ -1,5 +1,6 @@
 package chapter4.interfaceFuncional.Supplier;
 
+import java.util.ArrayList;
 import java.util.function.Supplier;
 
 public class SupplierInterface {
@@ -15,5 +16,19 @@ public class SupplierInterface {
 		StringBuilder x = s1.get();
 		x.append("Supplier");
 		System.out.println(x);
+		
+		ArrayList<String> al = new ArrayList<>();
+		al.add("Betinho");
+		al.add("Arnaldo");
+		
+		java.util.Collections.sort(al, new MySorter()::compare);//como eh um metodo de instância o compare(), é necessario dar um new
+		al.forEach(System.out::println);
+	}
+
+}
+
+class MySorter {
+	public int compare(String p1, String p2) {
+		return p1.compareTo(p2);
 	}
 }
