@@ -16,12 +16,13 @@ public class ClasseFuture {
 		try {
 			exe = Executors.newSingleThreadExecutor();
 			
-			Future<?> future = exe.submit(() -> {//submetendo um Runnable
+			Future<?> futureComRunnable = exe.submit(() -> {//submetendo um Runnable
 				for (int i = 0; i < 500; i++)
 					count++;
 			});
+			Future<?> futureComCallable = exe.submit(() -> 1); //aqui seria um Callable
 			
-			Object o = future.get(10, TimeUnit.SECONDS);
+			Object o = futureComRunnable.get(10, TimeUnit.SECONDS);
 			System.out.println(o);//como é um Runnable(retorna void), printará null
 			
 		} catch (TimeoutException e) {
