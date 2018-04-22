@@ -1,4 +1,4 @@
-package chapter5.exceptions;
+package chapter6.exceptions;
 
 import java.io.IOException;
 
