@@ -61,6 +61,13 @@ class PesarAnimaisComRecursiveAction extends RecursiveAction {
 			// quebra no meio e invoca duas Threads
 			invokeAll(new PesarAnimaisComRecursiveAction(start, meio, pesos),
 					new PesarAnimaisComRecursiveAction(meio, end, pesos));
+			
+			//ou pode usar um .fork(), mesma coisa q o invokeAll() acima
+//			PesarAnimaisComRecursiveAction taks1 = new PesarAnimaisComRecursiveAction(start, meio, pesos);
+//			PesarAnimaisComRecursiveAction taks2 = new PesarAnimaisComRecursiveAction(start, meio, pesos);
+//			taks2.fork();
+//			taks1.compute();
+//			taks2.join();
 		}
 	}
 
